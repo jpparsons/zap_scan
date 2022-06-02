@@ -1,0 +1,32 @@
+
+version: 2.1
+
+jobs:
+  scan:
+    #resource_class: medium+
+    docker:
+      - image: cimg/base:current
+    steps:
+      - run:
+          name: zap_scan
+          shell: /bin/bash
+          command: docker run --rm -v $(pwd):/zap/wrk/:rw -t ictu/zap2docker-weekly zap-full-scan.py -d -I -j \
+                    -t https://zap.productplan.com \
+                    -r /zap/wrk/security_report.html \
+                    --hook=/zap/auth_hook.py \
+                    -z "auth.loginurl=https://zap.productplan.com/users/sign_in \
+                    auth.username="zap@no-reply.com" \
+                    auth.password="Paddleboard123" \
+                    auth.username_field="user_email" \
+                    auth.password_field="user_password" \
+                    auth.submit_field="sign_in" \
+                    auth.check_delay=15
+
+      - store_artifacts:
+          path: /zap/wrk
+          destination: reports
+
+workflows:
+   build_and_test:
+    jobs:
+      - scan
