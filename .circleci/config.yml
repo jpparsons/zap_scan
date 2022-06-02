@@ -8,6 +8,7 @@ jobs:
       - image: cimg/base:current
     steps:
       - run:
+          - setup_remote_docker
           name: zap_scan
           shell: /bin/bash
           command: docker run --rm -v $(pwd):/zap/wrk/:rw -t ictu/zap2docker-weekly zap-full-scan.py -d -I -j \
