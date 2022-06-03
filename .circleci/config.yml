@@ -12,7 +12,7 @@ jobs:
           name: zap_scan
           shell: /bin/bash
           command: |
-              sudo docker run --rm -v $(pwd):/zap/wrk/:rw -t ictu/zap2docker-weekly zap-full-scan.py -d -I -j \
+              docker run --user 0 --rm -v $(pwd):/zap/wrk/:rw -t ictu/zap2docker-weekly zap-full-scan.py -d -I -j \
               -t https://zap.productplan.com \
               -r security_report.html \
               --hook=/zap/auth_hook.py \
