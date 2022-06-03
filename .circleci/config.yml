@@ -13,7 +13,7 @@ jobs:
           shell: /bin/bash
           command: docker run --rm -v $(pwd):/zap/wrk/:rw -t ictu/zap2docker-weekly zap-full-scan.py -d -I -j \
                     -t https://zap.productplan.com \
-                    -r /zap/wrk/security_report.html \
+                    -r security_report.html \
                     --hook=/zap/auth_hook.py \
                     -z "auth.loginurl=https://zap.productplan.com/users/sign_in \
                     auth.username="zap@no-reply.com" \
