@@ -4,8 +4,8 @@ version: 2.1
 jobs:
   scan:
     #resource_class: medium+
-    docker:
-      - image: cimg/base:current
+    machine:
+      - image: ubuntu-2004:2022.04.1
     steps:
       - setup_remote_docker
       - run:
