@@ -5,7 +5,7 @@ jobs:
   scan:
     #resource_class: medium+
     machine:
-      - image: ubuntu-2004:2022.04.1
+      image: ubuntu-2004:2022.04.1
     steps:
       - setup_remote_docker
       - run:
