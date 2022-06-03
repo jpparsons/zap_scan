@@ -25,8 +25,8 @@ jobs:
               auth.check_delay=15"
 
       - store_artifacts:
-          path: /home/circleci
-          destination: reports
+          path: /home/circleci/project/security_report.html
+          destination: reports/security_report.html
 
 workflows:
    build_and_test:
