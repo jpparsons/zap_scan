@@ -21,7 +21,8 @@ jobs:
               auth.username_field="user_email" \
               auth.password_field="user_password" \
               auth.submit_field="sign_in" \
-              auth.check_delay=15"
+              auth.check_delay=15 \
+              auth.include="https://zap.productplan.com/roadmaps,https://zap.productplan.com/manage_subscription/overview,https://zap.productplan.com/integrations,https://zap.productplan.com/manage_subscription/users,https://zap.productplan.com/manage_subscription/add_licenses""
 
       - run:
           name: send_report
