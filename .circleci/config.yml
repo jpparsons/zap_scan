@@ -1,9 +1,6 @@
 
 version: 2.1
 
-orbs:
-  go: circleci/go@1.7.1
-  
 jobs:
   scan:
     #resource_class: medium+
@@ -31,7 +28,7 @@ jobs:
       - run:
           name: send_report
           shell: /bin/bash
-          command: go run sendreport.go
+          command: ./sendreport
 
       - store_artifacts:
           path: /home/circleci/project/security_report.html
