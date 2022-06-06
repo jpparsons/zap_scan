@@ -1,6 +1,9 @@
 
 version: 2.1
 
+orbs:
+  go: circleci/go@1.7.1
+  
 jobs:
   scan:
     #resource_class: medium+
