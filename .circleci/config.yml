@@ -8,6 +8,7 @@ jobs:
       image: ubuntu-2004:2022.04.1
     steps:
       #- setup_remote_docker
+      - run: go get github.com/sendgrid/sendgrid-go
       - run:
           name: zap_scan
           shell: /bin/bash
@@ -17,12 +18,17 @@ jobs:
               -r security_report.html \
               --hook=/zap/auth_hook.py \
               -z "auth.loginurl=https://zap.productplan.com/users/sign_in \
-              auth.username="zap@no-reply.com" \
-              auth.password="Paddleboard123" \
+              auth.username=$ZAP_USER \
+              auth.password=$ZAP_PASSWORD \
               auth.username_field="user_email" \
               auth.password_field="user_password" \
               auth.submit_field="sign_in" \
               auth.check_delay=15"
+
+      - run:
+          name: send_report
+          shell: /bin/bash
+          command: go run sendreport.go
 
       - store_artifacts:
           path: /home/circleci/project/security_report.html
