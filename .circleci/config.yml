@@ -6,6 +6,7 @@ jobs:
     machine:
       image: ubuntu-2004:2022.04.1
     steps:
+      - checkout
       - run:
           name: zap_scan
           shell: /bin/bash
