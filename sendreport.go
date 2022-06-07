@@ -16,8 +16,8 @@ func main() {
   // create new *SGMailV3
   m := mail.NewV3Mail()
 
-  from := mail.NewEmail("ProductPlan", "noreply@productplan.com")
-  to := mail.NewEmail("John Parsons", "john@productplan.com")
+  from := mail.NewEmail("ProductPlan", os.Getenv("FROM_EMAIL"))
+  to := mail.NewEmail("ProductPlan", os.Getenv("TO_EMAIL"))
 
   // create new *Personalization
   personalization := mail.NewPersonalization()

@@ -12,17 +12,17 @@ jobs:
           shell: /bin/bash
           command: |
               docker run --user 0 --rm -v $(pwd):/zap/wrk/:rw -t ictu/zap2docker-weekly zap-full-scan.py -d -I -j \
-              -t https://zap.productplan.com \
+              -t $URL \
               -r security_report.html \
               --hook=/zap/auth_hook.py \
-              -z "auth.loginurl=https://zap.productplan.com/users/sign_in \
+              -z "auth.loginurl=$URL/users/sign_in \
               auth.username=$ZAP_USER \
               auth.password=$ZAP_PASSWORD \
               auth.username_field="user_email" \
               auth.password_field="user_password" \
               auth.submit_field="sign_in" \
               auth.check_delay=15 \
-              auth.include="https://zap.productplan.com/roadmaps,https://zap.productplan.com/manage_subscription/overview,https://zap.productplan.com/integrations,https://zap.productplan.com/manage_subscription/users,https://zap.productplan.com/manage_subscription/add_licenses""
+              auth.include=$INCLUDE_PATHS
 
       - run:
           name: send_report
