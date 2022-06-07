@@ -22,7 +22,7 @@ jobs:
               auth.password_field="user_password" \
               auth.submit_field="sign_in" \
               auth.check_delay=15 \
-              auth.include=$INCLUDE_PATHS
+              auth.include=$INCLUDE_PATHS"
 
       - run:
           name: send_report
