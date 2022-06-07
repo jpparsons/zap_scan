@@ -37,3 +37,15 @@ workflows:
    build_and_test:
     jobs:
       - scan
+
+   scheduled:
+     jobs:
+       - scan
+     triggers:
+       - schedule:
+           # 3AM PDT Tues
+           cron: "00 11 * * 2"
+           filters:
+             branches:
+               only:
+                 - main
